@@ -1,14 +1,9 @@
 <div align="center">
 
-# [NAME]
+IN CONSTRUCTION (:
 
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&center=true&vCenter=true&width=460&lines=Building+matchplay+%26+smk-buster;Node.js+%C2%B7+Next.js+%C2%B7+Astro;Agent-driven+development" alt="Building matchplay & smk-buster · Node.js · Next.js · Astro · Agent-driven development">
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&center=true&vCenter=true&width=460&lines=Building+matchplay+%26+smk-buster;Node.js+%C2%B7+Next.js+%C2%B7+Astro;Agent-driven+development" alt="Building matchplay & smk-buster · Node.js · Next.js · Astro">
 
-**[SHORT HEADLINE]**
-
-[LINK] · [LINK] · [LINK]
-
-</div>
 
 ---
 
@@ -30,7 +25,7 @@
 
 **Coding harnesses** — Claude Code, Codex, and sometimes Cursor, all driven through **t3code**
 
-**Design** — Claude Code doubles as the design tool
+**Design** — Claude Design doubles as the design tool
 
 **Backend** — Node.js first, reaching for Next.js and Astro when the project calls for it
 
