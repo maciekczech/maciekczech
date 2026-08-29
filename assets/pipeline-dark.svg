@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 830 180" width="830" height="180" role="img"
+  aria-label="How a change moves: research with hermes-agent and scratchpad; spec and plan in Linear and GitHub Projects; an optional design branch through Claude Design; build with Claude Code, Codex and Cursor driven through t3code, in TypeScript, Node, Next.js, Astro, React, Convex, Supabase and Clerk; review by Greptile, CodeRabbit, Macroscope and Bugbot; ship through GitHub Actions onto Docker, a Linux VPS and macOS.">
+<style>
+text{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif}
+.lbl{font-size:12.5px;font-weight:600;fill:#57606A;text-anchor:middle}
+.optTag{font-size:8.5px;letter-spacing:1.1px;fill:#57606A;font-weight:500}
+.tool{font-size:13px;font-weight:500;fill:#E6EDF3;text-anchor:middle}
+.tech{font-size:11.5px;font-weight:400;fill:#7D8590;text-anchor:middle}
+.track{stroke:#30363D;fill:none}
+.flow{stroke:#FFB224;stroke-width:1.5;fill:none;stroke-linecap:round;stroke-dasharray:1 2}
+@keyframes fm{0%{stroke-dashoffset:1}15%{stroke-dashoffset:0.750}
+    26%,38%{stroke-dashoffset:0.724}
+    45%{stroke-dashoffset:0.526}52%{stroke-dashoffset:0.500}
+    67%{stroke-dashoffset:0.250}82%,94%{stroke-dashoffset:0;opacity:1}
+    96%,100%{stroke-dashoffset:0;opacity:0}}
+@keyframes fb{0%,26%{stroke-dashoffset:1;opacity:1}38%,94%{stroke-dashoffset:0;opacity:1}
+    96%,100%{stroke-dashoffset:0;opacity:0}}
+@keyframes n0{0%,0.5%{opacity:0}1.1%,94%{opacity:1}96%,100%{opacity:0}}
+@keyframes h0{0%,0.5%{opacity:0}1.1%,94%{opacity:.15}96%,100%{opacity:0}}
+@keyframes g0{0%,0.5%{fill:#57606A}1.1%,15%{fill:#FFB224}15.8%,94%{fill:#7D8590}96%,100%{fill:#57606A}}
+@keyframes s0{0%,0%{opacity:0}0.7%,13.8%{opacity:1}14.5%,100%{opacity:0}}
+@keyframes n1{0%,15%{opacity:0}15.6%,94%{opacity:1}96%,100%{opacity:0}}
+@keyframes h1{0%,15%{opacity:0}15.6%,94%{opacity:.15}96%,100%{opacity:0}}
+@keyframes g1{0%,15%{fill:#57606A}15.6%,33%{fill:#FFB224}33.8%,94%{fill:#7D8590}96%,100%{fill:#57606A}}
+@keyframes s1{0%,15%{opacity:0}15.7%,31.8%{opacity:1}32.5%,100%{opacity:0}}
+@keyframes n2{0%,52%{opacity:0}52.6%,94%{opacity:1}96%,100%{opacity:0}}
+@keyframes h2{0%,52%{opacity:0}52.6%,94%{opacity:.15}96%,100%{opacity:0}}
+@keyframes g2{0%,52%{fill:#57606A}52.6%,67%{fill:#FFB224}67.8%,94%{fill:#7D8590}96%,100%{fill:#57606A}}
+@keyframes s2{0%,52%{opacity:0}52.7%,65.8%{opacity:1}66.5%,100%{opacity:0}}
+@keyframes n3{0%,67%{opacity:0}67.6%,94%{opacity:1}96%,100%{opacity:0}}
+@keyframes h3{0%,67%{opacity:0}67.6%,94%{opacity:.15}96%,100%{opacity:0}}
+@keyframes g3{0%,67%{fill:#57606A}67.6%,82%{fill:#FFB224}82.8%,94%{fill:#7D8590}96%,100%{fill:#57606A}}
+@keyframes s3{0%,67%{opacity:0}67.7%,80.8%{opacity:1}81.5%,100%{opacity:0}}
+@keyframes n4{0%,82%{opacity:0}82.6%,94%{opacity:1}96%,100%{opacity:0}}
+@keyframes h4{0%,82%{opacity:0}82.6%,94%{opacity:.15}96%,100%{opacity:0}}
+@keyframes g4{0%,82%{fill:#57606A}82.6%,94%{fill:#FFB224}94.8%,94%{fill:#7D8590}96%,100%{fill:#57606A}}
+@keyframes s4{0%,82%{opacity:0}82.7%,92.8%{opacity:1}93.5%,100%{opacity:0}}
+@keyframes n5{0%,33%{opacity:0}33.6%,94%{opacity:1}96%,100%{opacity:0}}
+@keyframes h5{0%,33%{opacity:0}33.6%,94%{opacity:.15}96%,100%{opacity:0}}
+@keyframes g5{0%,33%{fill:#57606A}33.6%,52%{fill:#FFB224}52.8%,94%{fill:#7D8590}96%,100%{fill:#57606A}}
+@keyframes s5{0%,33%{opacity:0}33.7%,50.8%{opacity:1}51.5%,100%{opacity:0}}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important}
+  .flow{stroke-dashoffset:0}
+  .lbl{fill:#7D8590}
+  circle[opacity="0"]{opacity:1}
+  .tool,.tech,.hair{opacity:0}
+}
+</style>
+<line class="track" x1="64" y1="72" x2="766" y2="72" stroke-width="1"/>
+<path class="track" d="M 258,72 C 275,72 277,34 292,34
+                   L 363,34 C 378,34 380,72 397,72" stroke-width="1" stroke-dasharray="3 3"/>
+<line class="flow" x1="64" y1="72" x2="766" y2="72" pathLength="1"
+      style="animation:fm 22s linear infinite"/>
+<path class="flow" d="M 258,72 C 275,72 277,34 292,34
+                   L 363,34 C 378,34 380,72 397,72" pathLength="1" style="animation:fb 22s linear infinite"/>
+<g><circle cx="64" cy="72" r="11" fill="#FFB224" opacity="0" style="animation:h0 22s linear infinite"/>
+  <circle cx="64" cy="72" r="5" fill="#0D1117" stroke="#30363D" stroke-width="1.5"/>
+  <circle cx="64" cy="72" r="5" fill="#FFB224" opacity="0" style="animation:n0 22s linear infinite"/>
+    <text x="64" y="98" class="lbl" style="animation:g0 22s linear infinite">research</text></g>
+<g><circle cx="239.5" cy="72" r="11" fill="#FFB224" opacity="0" style="animation:h1 22s linear infinite"/>
+  <circle cx="239.5" cy="72" r="5" fill="#0D1117" stroke="#30363D" stroke-width="1.5"/>
+  <circle cx="239.5" cy="72" r="5" fill="#FFB224" opacity="0" style="animation:n1 22s linear infinite"/>
+    <text x="239.5" y="98" class="lbl" style="animation:g1 22s linear infinite">spec &amp; plan</text></g>
+<g><circle cx="415" cy="72" r="11" fill="#FFB224" opacity="0" style="animation:h2 22s linear infinite"/>
+  <circle cx="415" cy="72" r="5" fill="#0D1117" stroke="#30363D" stroke-width="1.5"/>
+  <circle cx="415" cy="72" r="5" fill="#FFB224" opacity="0" style="animation:n2 22s linear infinite"/>
+    <text x="415" y="98" class="lbl" style="animation:g2 22s linear infinite">build</text></g>
+<g><circle cx="590.5" cy="72" r="11" fill="#FFB224" opacity="0" style="animation:h3 22s linear infinite"/>
+  <circle cx="590.5" cy="72" r="5" fill="#0D1117" stroke="#30363D" stroke-width="1.5"/>
+  <circle cx="590.5" cy="72" r="5" fill="#FFB224" opacity="0" style="animation:n3 22s linear infinite"/>
+    <text x="590.5" y="98" class="lbl" style="animation:g3 22s linear infinite">review</text></g>
+<g><circle cx="766" cy="72" r="11" fill="#FFB224" opacity="0" style="animation:h4 22s linear infinite"/>
+  <circle cx="766" cy="72" r="5" fill="#0D1117" stroke="#30363D" stroke-width="1.5"/>
+  <circle cx="766" cy="72" r="5" fill="#FFB224" opacity="0" style="animation:n4 22s linear infinite"/>
+    <text x="766" y="98" class="lbl" style="animation:g4 22s linear infinite">ship</text></g>
+<g><circle cx="327.5" cy="34" r="11" fill="#FFB224" opacity="0" style="animation:h5 22s linear infinite"/>
+  <circle cx="327.5" cy="34" r="5" fill="#0D1117" stroke="#30363D" stroke-width="1.5"/>
+  <circle cx="327.5" cy="34" r="5" fill="#FFB224" opacity="0" style="animation:n5 22s linear infinite"/>
+    <text x="327.5" y="20" class="lbl" style="animation:g5 22s linear infinite">design<tspan class="optTag" dx="6">optional</tspan></text></g>
+<line class="hair" x1="64" y1="121" x2="766" y2="121" stroke="#30363D" stroke-width="1" opacity=".55"/>
+<text x="415" y="143" class="tool" opacity="0" style="animation:s0 22s linear infinite">hermes-agent  ·  scratchpad</text>
+<text x="415" y="163" class="tech" opacity="0" style="animation:s0 22s linear infinite">Python  ·  public data sources</text>
+<text x="415" y="143" class="tool" opacity="0" style="animation:s1 22s linear infinite">Linear  ·  GitHub Projects</text>
+<text x="415" y="163" class="tech" opacity="0" style="animation:s1 22s linear infinite">Markdown specs  ·  brainstorm, then grill it</text>
+<text x="415" y="143" class="tool" opacity="0" style="animation:s2 22s linear infinite">Claude Code  ·  Codex  ·  Cursor  —  all driven through t3code</text>
+<text x="415" y="163" class="tech" opacity="0" style="animation:s2 22s linear infinite">TypeScript  ·  Node  ·  Next.js  ·  Astro  ·  React  ·  Convex  ·  Supabase  ·  Clerk</text>
+<text x="415" y="143" class="tool" opacity="0" style="animation:s3 22s linear infinite">Greptile  ·  CodeRabbit  ·  Macroscope  ·  Bugbot</text>
+<text x="415" y="163" class="tech" opacity="0" style="animation:s3 22s linear infinite">GitHub pull requests  ·  every bot comment answered</text>
+<text x="415" y="143" class="tool" opacity="0" style="animation:s4 22s linear infinite">GitHub Actions</text>
+<text x="415" y="163" class="tech" opacity="0" style="animation:s4 22s linear infinite">Docker  ·  Linux VPS  ·  macOS</text>
+<text x="415" y="143" class="tool" opacity="0" style="animation:s5 22s linear infinite">Claude Design</text>
+<text x="415" y="163" class="tech" opacity="0" style="animation:s5 22s linear infinite">HTML  ·  CSS  ·  screenshots in both themes</text>
+</svg>
