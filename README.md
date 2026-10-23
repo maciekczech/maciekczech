@@ -1,64 +1,38 @@
-<div align="center">
+<!-- Everything visual here is generated and committed, not fetched from a third party.
+     Regenerate:  node tools/build-assets.mjs   (wordmark, stack, links)
+                  node tools/pipeline.mjs       (animated pipeline)
+                  node tools/metrics.mjs --write (language bars)
+     Why images: GitHub strips <style>, class and script from READMEs. An image is the
+     only surface you actually control — and a self-hosted one can't 503 on you. -->
 
-IN CONSTRUCTION (:
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/wordmark-dark.png">
+  <img alt="Maciek Czech — builds at the seam of product and systems. Node first, agents on the grunt work." src="assets/wordmark-light.png" width="830">
+</picture>
 
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&center=true&vCenter=true&width=460&lines=Building+matchplay+%26+smk-buster;Node.js+%C2%B7+Next.js+%C2%B7+Astro;Agent-driven+development" alt="Building matchplay & smk-buster · Node.js · Next.js · Astro">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/stack-dark.png">
+  <img alt="Stack: TypeScript, Node, Next.js, Astro, React, Convex, Supabase, Clerk, Docker, GitHub Actions, Python, Linear" src="assets/stack-light.png" width="830">
+</picture>
 
+**Now** — [t3code](https://github.com/maciekczech/t3code) agent orchestrator&nbsp; ·&nbsp; [tariff-radar](https://github.com/maciekczech/tariff-radar) trade-remedy signals&nbsp; ·&nbsp; [hermes-agent](https://github.com/maciekczech/hermes-agent) grows with you
 
----
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/pipeline-dark.svg">
+  <img alt="How the work moves: research (hermes-agent, scratchpad) → spec and plan (Linear, GitHub Projects) → an optional design branch (Claude Design) → build (Claude Code, Codex, Cursor, all driven through t3code) → review (Greptile, CodeRabbit, Macroscope, Bugbot) → ship (GitHub Actions, Docker, Linux VPS)" src="assets/pipeline-light.svg" width="830">
+</picture>
 
-## Currently building
+**Where the work goes** — 45 repos by primary language, 13 of them in the open
 
-- **matchplay** — [DESCRIPTION]
-- **smk-buster** — [DESCRIPTION]
+```text
+TypeScript         16 repos  ███████████·············   45.7 %
+Python              7 repos  █████···················   20.0 %
+JavaScript          6 repos  ████····················   17.1 %
+Shell               2 repos  █·······················    5.7 %
+Rust, HTML, other   4 repos  ███·····················   11.4 %
+```
 
-## Tooling
-
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=000)
-![React](https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=000)
-![Node.js](https://img.shields.io/badge/Node.js-5FA04E?logo=nodedotjs&logoColor=fff)
-![Next.js](https://img.shields.io/badge/Next.js-000000?logo=nextdotjs&logoColor=fff)
-![Astro](https://img.shields.io/badge/Astro-BC52EE?logo=astro&logoColor=fff)
-![Git](https://img.shields.io/badge/Git-F05032?logo=git&logoColor=fff)
-
-## How I work
-
-**Coding harnesses** — Claude Code, Codex, and sometimes Cursor, all driven through **t3code**
-
-**Design** — Claude Design doubles as the design tool
-
-**Backend** — Node.js first, reaching for Next.js and Astro when the project calls for it
-
-**Data** — Convex by preference, Supabase also in active use
-
-**Auth** — Clerk or Supabase Auth for auth and user management
-
-**Project tracking** — Linear and GitHub Projects
-
-**Environment** — macOS locally, plus a remote Linux dev server on a VPS
-
-**Agents** — [hermes-agent](https://github.com/maciekczech/hermes-agent) as my "go do things" agent
-
-**Review agents** — Greptile, CodeRabbit, Macroscope, and Bugbot in the review loop
-
-## GitHub stats
-
-<img src="github-metrics.svg" alt="GitHub metrics — commits, activity, and top languages">
-
-
-<details>
-<summary><strong>Development setup</strong></summary>
-
-- [ITEM]
-- [ITEM]
-- [ITEM]
-
-</details>
-
-## Experience
-
-**[ROLE] · [COMPANY]**  
-[DATE RANGE]
-
-**[ROLE] · [COMPANY]**  
-[DATE RANGE]
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/links-dark.png">
+  <img alt="github.com/maciekczech · linkedin · claude code · codex" src="assets/links-light.png" width="830">
+</picture>
