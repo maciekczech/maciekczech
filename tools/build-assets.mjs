@@ -56,13 +56,13 @@ const PROJECTS = {
   matchplay: {
     accent: 'green', url: 'matchplay.gg', tech: ['Next.js', 'Supabase', 'Vercel', 'PostHog'],
     title: 'Web app for organising amateur pickup sports games in Poland',
-    brand: `<div class="brand mp"><svg class="pitch"><line x1="50%" y1="0" x2="50%" y2="100%"/><circle cx="50%" cy="50%"/></svg>
+    brand: `<div class="brand"><svg class="pitch"><line x1="50%" y1="0" x2="50%" y2="100%"/><circle cx="50%" cy="50%"/></svg>
       <div class="mpw">Match<span>Play</span></div></div>`,
   },
   'smk-buster': {
     accent: 'amber', url: 'smk-buster.pl', tech: ['Next.js', 'Convex', 'Trigger.dev', 'Stagehand'],
     title: 'Automates procedure entries in SMK for Poland&#39;s resident doctors',
-    brand: `<div class="brand smk"><div class="orb">+</div><div class="smkw">SMK Buster</div></div>`,
+    brand: `<div class="brand"><div class="orb">+</div><div class="smkw">SMK Buster</div></div>`,
   },
 };
 
@@ -76,7 +76,7 @@ const BLOCKS = {
       <div class="meta">software engineer<br>Bydgoszcz, Poland · remote / EU</div></div>
     <div class="cell span2 hs">${group('harnesses', theme)}
       <div class="flow"><b>T3 Code</b><i>›</i><span>two remote Linux machines</span><i>›</i><span>PR with screenshots + test output</span></div>
-      <div class="foot">Claude Code splits and builds, Codex reviews, Grok researches, Neon (Gemini) edits text. Every PR <em>merges itself</em> when checks leave no doubt, and waits for me otherwise.</div></div>
+      <div class="foot">I steer from any device: Claude Code splits and builds, Codex reviews, Grok researches, Neon (Gemini) edits text. Every PR <em>merges itself</em> when checks leave no doubt, and waits for me otherwise.</div></div>
     <div class="cell">${group('code', theme)}</div><div class="cell">${group('web', theme)}</div>
     <div class="cell">${group('data', theme)}</div><div class="cell span2">${group('cloud', theme)}</div>
     <div class="cell">${group('review', theme)}</div></div></div>`,
@@ -86,7 +86,7 @@ const BLOCKS = {
     <div class="url ${p.accent}">${p.url} ↗</div></div>`])),
 };
 
-const CSS = `@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;700;800&display=swap');
+const CSS = `@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
 *{box-sizing:border-box;margin:0;padding:0}
 html{background:transparent;-webkit-font-smoothing:antialiased}
 #root{font-family:Inter,sans-serif;color:var(--text)}
@@ -171,7 +171,7 @@ for (const [layout, { width, scale }] of Object.entries(LAYOUTS)) {
       await tab.setContent(page(block(theme), theme, layout), { waitUntil: 'networkidle' });
       const fontsOk = await tab.evaluate(async () => {
         const faces = ['400 1em Inter', '600 1em Inter', '700 1em Inter', '800 1em Inter', '400 1em "JetBrains Mono"',
-          '500 1em "JetBrains Mono"', '700 1em "JetBrains Mono"', '800 1em "JetBrains Mono"'];
+          '500 1em "JetBrains Mono"', '700 1em "JetBrains Mono"'];
         const loaded = await Promise.all(faces.map((f) => document.fonts.load(f)));
         await document.fonts.ready;
         return loaded.every((list) => list.length > 0);
