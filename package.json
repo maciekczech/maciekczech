@@ -1,0 +1,11 @@
+{
+  "name": "maciekczech-profile",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build:assets": "node tools/build-assets.mjs"
+  },
+  "devDependencies": {
+    "playwright": "1.65.0"
+  }
+}
