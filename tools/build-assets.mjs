@@ -43,130 +43,119 @@ function logo(name, theme) {
   return `<img class="logo${colour === 'badge' ? ' badge' : ''}" src="${src}" alt="">`;
 }
 
-const STACK = [
-  ['Code', ['TypeScript', 'Go', 'Python', 'Bash']],
-  ['Web', ['React', 'Node.js', 'Next.js']],
-  ['Cloud, infrastructure &amp; CI/CD', ['AWS', 'Kubernetes', 'Terraform', 'Docker', 'GitHub Actions']],
-  ['Data &amp; auth', ['Convex', 'Supabase', 'Clerk']],
-  ['Harnesses', ['Claude Code', 'Codex', 'Grok', 'Antigravity', 'Cursor']],
-  ['Agentic code review', ['CodeRabbit', 'Greptile', 'Macroscope', 'Bugbot']],
-];
+const STACK = {
+  code: ['Code', ['TypeScript', 'Go', 'Python', 'Bash']],
+  web: ['Web', ['React', 'Node.js', 'Next.js']],
+  data: ['Data &amp; auth', ['Convex', 'Supabase', 'Clerk']],
+  cloud: ['Cloud, infrastructure &amp; CI/CD', ['AWS', 'Kubernetes', 'Terraform', 'Docker', 'GitHub Actions']],
+  harnesses: ['Harnesses', ['Claude Code', 'Codex', 'Grok', 'Antigravity', 'Cursor']],
+  review: ['Agentic code review', ['CodeRabbit', 'Greptile', 'Macroscope', 'Bugbot']],
+};
 
 const PROJECTS = {
   matchplay: {
     accent: 'green', url: 'matchplay.gg', tech: ['Next.js', 'Supabase', 'Vercel', 'PostHog'],
     title: 'Web app for organising amateur pickup sports games in Poland',
-    sub: 'Built and run solo end-to-end: match scheduling, player RSVPs, rosters &amp; analytics',
-    brand: () => `<div class="brand mp">
-      <svg class="pitch"><line x1="50%" y1="0" x2="50%" y2="100%"/><circle cx="50%" cy="50%"/>
-        <rect class="goal" x="0" y="20%" height="60%"/><rect class="goal right" x="100%" y="20%" height="60%"/></svg>
-      <div class="mpw">Match<span>Play</span></div><div class="state">soft-launched</div></div>`,
+    brand: `<div class="brand mp"><svg class="pitch"><line x1="50%" y1="0" x2="50%" y2="100%"/><circle cx="50%" cy="50%"/></svg>
+      <div class="mpw">Match<span>Play</span></div></div>`,
   },
   'smk-buster': {
     accent: 'amber', url: 'smk-buster.pl', tech: ['Next.js', 'Convex', 'Trigger.dev', 'Stagehand'],
     title: 'Automates procedure entries in SMK for Poland&#39;s resident doctors',
-    sub: 'One form in, many entries out: hybrid AI + deterministic browser automation',
-    brand: () => `<div class="brand smk"><i class="tl"></i><i class="tr"></i><i class="bl"></i><i class="br"></i>
-      <div class="orb">+</div><div class="smkw">SMK Buster</div></div>`,
+    brand: `<div class="brand smk"><div class="orb">+</div><div class="smkw">SMK Buster</div></div>`,
   },
 };
 
+const group = (key, theme) => `<div class="k">${STACK[key][0]}</div>
+  <div class="items">${STACK[key][1].map((n) => `<span class="st"><span class="tile">${logo(n, theme)}</span>${n}</span>`).join('')}</div>`;
+
 const BLOCKS = {
-  wordmark: () => `<div class="wm"><div class="name">Maciej Czech</div>
-    <div class="role">Software Engineer</div><div class="loc">Bydgoszcz, Poland<i>·</i>Remote / EU</div></div>`,
-  stack: (theme) => `<div class="stack">${STACK.map(([label, items]) => `<div class="sg"><div class="k">${label}</div>
-    <div class="items">${items.map((n) => `<span class="st"><span class="tile">${logo(n, theme)}</span>${n}</span>`).join('')}</div></div>`).join('')}</div>`,
-  ...Object.fromEntries(Object.entries(PROJECTS).map(([key, p]) => [key, (theme) => `<div class="card">${p.brand()}
-    <div class="body"><div class="title">${p.title}</div><div class="sub">${p.sub}</div>
-    <div class="url ${p.accent}">${p.url} ↗</div>
-    <div class="tech">${p.tech.map((n) => `<span class="pt">${logo(n, theme)}${n}</span>`).join('')}</div></div></div>`])),
+  board: (theme) => `<div class="board"><div class="cells">
+    <div class="cell"><div class="name">Maciej Czech</div>
+      <div class="tag">I build and run products solo by steering coding agents.</div>
+      <div class="meta">software engineer<br>Bydgoszcz, Poland · remote / EU</div></div>
+    <div class="cell span2 hs">${group('harnesses', theme)}
+      <div class="flow"><b>T3 Code</b><i>›</i><span>two remote Linux machines</span><i>›</i><span>PR with screenshots + test output</span></div>
+      <div class="foot">Claude Code splits and builds, Codex reviews, Grok researches, Neon (Gemini) edits text. Every PR <em>merges itself</em> when checks leave no doubt, and waits for me otherwise.</div></div>
+    <div class="cell">${group('code', theme)}</div><div class="cell">${group('web', theme)}</div>
+    <div class="cell">${group('data', theme)}</div><div class="cell span2">${group('cloud', theme)}</div>
+    <div class="cell">${group('review', theme)}</div></div></div>`,
+  ...Object.fromEntries(Object.entries(PROJECTS).map(([key, p]) => [key, (theme) => `<div class="proj">${p.brand}
+    <div class="pbody"><div class="title">${p.title}</div>
+    <div class="tech">${p.tech.map((n) => `<span class="pt">${logo(n, theme)}${n}</span>`).join('')}</div></div>
+    <div class="url ${p.accent}">${p.url} ↗</div></div>`])),
 };
 
 const CSS = `@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;700;800&display=swap');
 *{box-sizing:border-box;margin:0;padding:0}
 html{background:transparent;-webkit-font-smoothing:antialiased}
 #root{font-family:Inter,sans-serif;color:var(--text)}
-.k,.st,.pt,.url,.state,.wm{font-family:'JetBrains Mono',monospace}
+.k,.st,.pt,.url,.meta,.flow{font-family:'JetBrains Mono',monospace}
 
-.wm .name{font-weight:800;font-size:29px;letter-spacing:-.04em;line-height:1.05;color:var(--strong)}
-.wm .role{margin-top:7px;font-size:11.5px;font-weight:700;color:var(--green)}
-.wm .loc{margin-top:3px;font-size:11.5px;color:var(--muted)}
-.wm .loc i{font-style:normal;color:var(--dim);margin:0 5px}
-
-.card{border:1px solid var(--hair);border-radius:9px;overflow:hidden;background:var(--surface)}
-.brand{position:relative;height:64px;background:#191B1F;display:flex;align-items:center;justify-content:center;gap:8px}
-.brand>*{position:relative}
-.mp{flex-direction:column;gap:4px}
-.pitch{position:absolute;inset:0;width:100%;height:100%;fill:none;stroke:#4ADE80;stroke-width:1;opacity:.2;--r:20px}
-.pitch circle{r:var(--r)}
-.goal{width:16px}.goal.right{transform:translateX(-16px)}
-.mpw{font-weight:800;font-size:21px;letter-spacing:-.04em;line-height:1;color:#fff}
-.mpw span{color:#4ADE80}
-.state{font-size:10.5px;letter-spacing:.06em;color:#3FBF6F}
-.smk i{position:absolute;width:8px;height:8px;border:0 solid rgba(251,191,36,.3)}
-.smk .tl{top:8px;left:10px;border-width:1px 0 0 1px}.smk .tr{top:8px;right:10px;border-width:1px 1px 0 0}
-.smk .bl{bottom:8px;left:10px;border-width:0 0 1px 1px}.smk .br{bottom:8px;right:10px;border-width:0 1px 1px 0}
-.orb{width:24px;height:24px;border-radius:50%;border:1.5px solid #FBBF24;background:rgba(245,158,11,.12);color:#FBBF24;
-  font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center}
-.smkw{font-weight:700;font-size:16px;letter-spacing:-.02em;color:#fff}
-.body{padding:10px 12px 11px}
-.title{font-size:13px;font-weight:600;line-height:1.3;color:var(--strong);text-wrap:pretty}
-.sub{font-size:11.5px;line-height:1.4;color:var(--muted);margin-top:3px;text-wrap:pretty}
-.url{display:inline-block;margin-top:8px;font-size:11.5px;font-weight:700;text-decoration:underline;text-underline-offset:3px}
-.url.green{color:var(--green)}.url.amber{color:var(--amber)}
-.tech{display:flex;flex-wrap:wrap;gap:4px 11px;margin-top:8px}
-.pt{display:inline-flex;align-items:center;gap:5px;font-size:10.5px;color:var(--muted)}
-.pt .logo{width:12.5px;height:12.5px}
-.pt .logo.badge{border-radius:3px}
-
-.sg{padding:8px 0 9px;border-top:1px solid var(--hair)}
-.sg:first-child{border-top:0;padding-top:0}
-.sg:last-child{padding-bottom:0}
+.board,.proj{border:1px solid var(--hair);border-radius:9px;overflow:hidden;background:var(--surface)}
+.cells{display:grid;margin:-1px 0 0 -1px;width:calc(100% + 1px)}
+.cell{padding:11px 12px 12px;border-top:1px solid var(--hair);border-left:1px solid var(--hair)}
+.name{font-weight:800;font-size:26px;letter-spacing:-.04em;line-height:1.05;color:var(--strong)}
+.tag{margin-top:7px;font-size:12.5px;line-height:1.4}
+.meta{margin-top:9px;font-size:10.5px;line-height:1.6;color:var(--dim)}
 .k{font-size:10.5px;color:var(--dim)}
-.items{display:flex;flex-wrap:wrap;gap:7px 10px;margin-top:6px}
-.st{display:inline-flex;align-items:center;gap:5px;font-size:10.5px;font-weight:500;color:var(--text)}
+.items{display:flex;flex-wrap:wrap;gap:7px 10px;margin-top:7px}
+.st{display:inline-flex;align-items:center;gap:5px;font-size:10.5px;font-weight:500}
 .tile{width:20px;height:20px;border-radius:5px;background:var(--tile);display:flex;align-items:center;justify-content:center;overflow:hidden}
 .tile .logo{width:13px;height:13px;display:block}
 .tile .logo.badge{width:100%;height:100%}
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:2px 6px;margin-top:11px;font-size:10.5px;color:var(--muted)}
+.flow b{color:var(--strong)}
+.flow i{font-style:normal;color:var(--dim)}
+.foot{margin-top:6px;font-size:11.5px;line-height:1.45;color:var(--muted)}
+.foot em{font-style:normal;color:var(--green)}
+
+.brand{position:relative;height:46px;background:#191B1F;display:flex;align-items:center;justify-content:center;gap:8px}
+.brand>div{position:relative}
+.pitch{position:absolute;inset:0;width:100%;height:100%;fill:none;stroke:#4ADE80;stroke-width:1;opacity:.2}
+.pitch circle{r:16px}
+.mpw{font-weight:800;font-size:19px;letter-spacing:-.04em;line-height:1;color:#fff}
+.mpw span{color:#4ADE80}
+.orb{width:22px;height:22px;border-radius:50%;border:1.5px solid #FBBF24;background:rgba(245,158,11,.12);color:#FBBF24;
+  font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center}
+.smkw{font-weight:700;font-size:15px;letter-spacing:-.02em;color:#fff}
+.pbody{padding:10px 12px 0}
+.title{font-size:12.5px;font-weight:600;line-height:1.3;color:var(--strong);text-wrap:pretty}
+.tech{display:flex;flex-wrap:wrap;gap:4px 11px;margin-top:7px}
+.pt{display:inline-flex;align-items:center;gap:5px;font-size:10.5px;color:var(--muted)}
+.pt .logo{width:12.5px;height:12.5px}
+.pt .logo.badge{border-radius:3px}
+.url{width:fit-content;margin:8px 12px 11px;font-size:11.5px;font-weight:700;text-decoration:underline;text-underline-offset:3px}
+.url.green{color:var(--green)}.url.amber{color:var(--amber)}
 
 /* wide: same system, reflowed for the 830px column */
-.wide .wm .name{font-size:40px}
-.wide .wm .role{margin-top:10px;font-size:14px}
-.wide .wm .loc{margin-top:4px;font-size:14px}
-.wide .card{display:grid;grid-template-columns:232px 1fr;border-radius:10px}
-.wide .brand{height:auto;min-height:150px}
-.wide .pitch{--r:28px}
-.wide .goal{width:20px}.wide .goal.right{transform:translateX(-20px)}
-.wide .mp{gap:7px}
-.wide .mpw{font-size:32px}
-.wide .state{font-size:12px}
-.wide .orb{width:32px;height:32px;font-size:19px;border-width:2px}
-.wide .smk{gap:11px}
-.wide .smkw{font-size:23px}
-.wide .smk i{width:11px;height:11px}
-.wide .smk .tl,.wide .smk .tr{top:12px}.wide .smk .bl,.wide .smk .br{bottom:12px}
-.wide .smk .tl,.wide .smk .bl{left:14px}.wide .smk .tr,.wide .smk .br{right:14px}
-.wide .body{padding:18px 22px 19px;display:flex;flex-direction:column;justify-content:center}
-.wide .title{font-size:17px}
-.wide .sub{font-size:14px;margin-top:5px}
-.wide .url{margin-top:12px;font-size:13px}
-.wide .tech{gap:6px 18px;margin-top:12px}
-.wide .pt{font-size:12.5px;gap:6px}
-.wide .pt .logo{width:15px;height:15px}
-.wide .stack{display:grid;grid-template-columns:repeat(3,1fr)}
-.wide .sg{border-top:0;padding:14px 20px}
-.wide .sg:nth-child(3n+2),.wide .sg:nth-child(3n){border-left:1px solid var(--hair)}
-.wide .sg:nth-child(3n+1){padding-left:0}
-.wide .sg:nth-child(3n){padding-right:0}
-.wide .sg:nth-child(n+4){border-top:1px solid var(--hair)}
-.wide .sg:nth-child(-n+3){padding-top:2px}
-.wide .sg:nth-child(n+4){padding-bottom:2px}
+.wide .board,.wide .proj{border-radius:10px}
+.wide .cells{grid-template-columns:repeat(3,1fr)}
+.wide .span2{grid-column:span 2}
+.wide .cell{padding:14px 18px 16px}
+.wide .name{font-size:28px}
+.wide .tag{margin-top:8px;font-size:13.5px}
+.wide .meta{margin-top:12px;font-size:11.5px}
 .wide .k{font-size:12px}
 .wide .items{gap:9px 16px;margin-top:10px}
+.wide .hs .items{column-gap:14px}
 .wide .st{font-size:13px;gap:8px}
 .wide .tile{width:24px;height:24px;border-radius:6px}
 .wide .tile .logo{width:16px;height:16px}
-.wide .tile .logo.badge{width:100%;height:100%}`;
+.wide .tile .logo.badge{width:100%;height:100%}
+.wide .flow{flex-wrap:nowrap;white-space:nowrap;gap:9px;margin-top:14px;font-size:12px}
+.wide .foot{margin-top:7px;font-size:13px}
+.wide .proj{display:grid;grid-template-columns:168px 1fr auto;height:66px}
+.wide .brand{height:auto;gap:9px}
+.wide .pitch circle{r:22px}
+.wide .mpw{font-size:20px}
+.wide .orb{width:24px;height:24px;font-size:14px}
+.wide .pbody{padding:0 18px;display:flex;flex-direction:column;justify-content:center}
+.wide .title{font-size:13.5px}
+.wide .tech{gap:4px 14px}
+.wide .pt{font-size:11px}
+.wide .pt .logo{width:13px;height:13px}
+.wide .url{align-self:center;margin:0 20px 0 0;font-size:12.5px}`;
 
 const page = (body, theme, layout) => `<!doctype html><html><head><meta charset="utf-8"><style>${CSS}
 :root{${Object.entries(THEMES[theme]).map(([k, v]) => `--${k}:${v}`).join(';')}}</style></head>
