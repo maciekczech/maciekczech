@@ -11,7 +11,7 @@ const LAYOUTS = { wide: { width: 830, scale: 2 }, narrow: { width: 278, scale: 3
 
 const THEMES = {
   light: { surface: '#F6F8FA', tile: '#EAEEF2', hair: '#D1D9E0', text: '#1F2328', strong: '#0B0D10',
-           muted: '#59636E', dim: '#818B98', green: '#1A7F37', amber: '#9A6700' },
+           muted: '#59636E', dim: '#6B7480', green: '#1A7F37', amber: '#9A6700' },
   dark:  { surface: '#1E2024', tile: '#2F333B', hair: '#383C45', text: '#E8EAEE', strong: '#FFFFFF',
            muted: '#B4BAC5', dim: '#8A91A0', green: '#4ADE80', amber: '#FBBF24' },
 };
