@@ -133,7 +133,7 @@ html{background:transparent;-webkit-font-smoothing:antialiased}
 .wide .wm .name{font-size:40px}
 .wide .wm .role{margin-top:10px;font-size:14px}
 .wide .wm .loc{margin-top:4px;font-size:14px}
-.wide .card{display:grid;grid-template-columns:250px 1fr;border-radius:10px}
+.wide .card{display:grid;grid-template-columns:232px 1fr;border-radius:10px}
 .wide .brand{height:auto;min-height:150px}
 .wide .pitch{--r:28px}
 .wide .goal{width:20px}.wide .goal.right{transform:translateX(-20px)}
