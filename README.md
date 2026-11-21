@@ -1,64 +1,46 @@
-<div align="center">
+<!-- Images in assets/ are generated: npm run build:assets -->
+<p>
+<picture>
+  <source media="(max-width: 767px) and (prefers-color-scheme: dark)" srcset="assets/wordmark-narrow-dark.png">
+  <source media="(max-width: 767px)" srcset="assets/wordmark-narrow-light.png">
+  <source media="(prefers-color-scheme: dark)" srcset="assets/wordmark-wide-dark.png">
+  <img src="assets/wordmark-wide-light.png" alt="Maciej Czech, Software Engineer, Bydgoszcz, Poland · Remote / EU" width="830">
+</picture>
+</p>
 
-IN CONSTRUCTION (:
+I work on User Foundation (login, privacy, and consents) at Schibsted. Outside work I build and run MatchPlay for pickup sports and SMK Buster for resident doctors.
 
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&center=true&vCenter=true&width=460&lines=Building+matchplay+%26+smk-buster;Node.js+%C2%B7+Next.js+%C2%B7+Astro;Agent-driven+development" alt="Building matchplay & smk-buster · Node.js · Next.js · Astro">
+<p><a href="https://matchplay.gg">
+<picture>
+  <source media="(max-width: 767px) and (prefers-color-scheme: dark)" srcset="assets/matchplay-narrow-dark.png">
+  <source media="(max-width: 767px)" srcset="assets/matchplay-narrow-light.png">
+  <source media="(prefers-color-scheme: dark)" srcset="assets/matchplay-wide-dark.png">
+  <img src="assets/matchplay-wide-light.png" alt="MatchPlay (matchplay.gg): soft-launched web app for organising amateur pickup sports games in Poland." width="830">
+</picture>
+</a></p>
 
-
----
-
-## Currently building
-
-- **matchplay** — [DESCRIPTION]
-- **smk-buster** — [DESCRIPTION]
-
-## Tooling
-
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=000)
-![React](https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=000)
-![Node.js](https://img.shields.io/badge/Node.js-5FA04E?logo=nodedotjs&logoColor=fff)
-![Next.js](https://img.shields.io/badge/Next.js-000000?logo=nextdotjs&logoColor=fff)
-![Astro](https://img.shields.io/badge/Astro-BC52EE?logo=astro&logoColor=fff)
-![Git](https://img.shields.io/badge/Git-F05032?logo=git&logoColor=fff)
+<p><a href="https://smk-buster.pl">
+<picture>
+  <source media="(max-width: 767px) and (prefers-color-scheme: dark)" srcset="assets/smk-buster-narrow-dark.png">
+  <source media="(max-width: 767px)" srcset="assets/smk-buster-narrow-light.png">
+  <source media="(prefers-color-scheme: dark)" srcset="assets/smk-buster-wide-dark.png">
+  <img src="assets/smk-buster-wide-light.png" alt="SMK Buster (smk-buster.pl): automates procedure entries in SMK for Poland's resident doctors." width="830">
+</picture>
+</a></p>
 
 ## How I work
 
-**Coding harnesses** — Claude Code, Codex, and sometimes Cursor, all driven through **t3code**
+For personal projects, I steer agents on two remote Linux machines of my own through T3 Code from any device. Claude Code splits and builds the work, Codex reviews, Grok researches, and Neon (Gemini) edits text. Every PR arrives with screenshots and test output, merges itself when checks leave no doubt, and waits for me otherwise. That merged ~970 PRs across 6 repos in a month. Locally I work on macOS, and Claude Design is my design tool.
 
-**Design** — Claude Design doubles as the design tool
+## Stack
 
-**Backend** — Node.js first, reaching for Next.js and Astro when the project calls for it
+<p>
+<picture>
+  <source media="(max-width: 767px) and (prefers-color-scheme: dark)" srcset="assets/stack-narrow-dark.png">
+  <source media="(max-width: 767px)" srcset="assets/stack-narrow-light.png">
+  <source media="(prefers-color-scheme: dark)" srcset="assets/stack-wide-dark.png">
+  <img src="assets/stack-wide-light.png" alt="Code: TypeScript, Go, Python, Bash. Web: React, Node.js, Next.js. Cloud, infrastructure &amp; CI/CD: AWS, Kubernetes, Terraform, Docker, GitHub Actions. Data &amp; auth: Convex, Supabase, Clerk. Harnesses: Claude Code, Codex, Grok, Antigravity, Cursor. Agentic code review: CodeRabbit, Greptile, Macroscope, Bugbot." width="830">
+</picture>
+</p>
 
-**Data** — Convex by preference, Supabase also in active use
-
-**Auth** — Clerk or Supabase Auth for auth and user management
-
-**Project tracking** — Linear and GitHub Projects
-
-**Environment** — macOS locally, plus a remote Linux dev server on a VPS
-
-**Agents** — [hermes-agent](https://github.com/maciekczech/hermes-agent) as my "go do things" agent
-
-**Review agents** — Greptile, CodeRabbit, Macroscope, and Bugbot in the review loop
-
-## GitHub stats
-
-<img src="github-metrics.svg" alt="GitHub metrics — commits, activity, and top languages">
-
-
-<details>
-<summary><strong>Development setup</strong></summary>
-
-- [ITEM]
-- [ITEM]
-- [ITEM]
-
-</details>
-
-## Experience
-
-**[ROLE] · [COMPANY]**  
-[DATE RANGE]
-
-**[ROLE] · [COMPANY]**  
-[DATE RANGE]
+[LinkedIn](https://www.linkedin.com/in/maciej-czech) · [maciej.a.czech@gmail.com](mailto:maciej.a.czech@gmail.com)
