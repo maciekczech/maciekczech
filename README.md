@@ -4,11 +4,11 @@
 <p>
 <a href="assets/board-wide-dark.png#gh-dark-mode-only"><picture>
   <source media="(max-width: 1011px)" srcset="assets/board-narrow-dark.png" width="400">
-  <img src="assets/board-wide-dark.png" alt="Maciej Czech, software engineer, Bydgoszcz, Poland · remote / EU. I build and run products solo by steering coding agents. Harnesses: Claude Code, Codex, Grok, Antigravity, Cursor. T3 Code, two remote Linux machines, PR with screenshots and test output. I steer from any device: Claude Code splits and builds, Codex reviews, Grok researches, Neon (Gemini) edits text. Every PR merges itself when checks leave no doubt, and waits for me otherwise. Code: TypeScript, Go, Python, Bash. Web: React, Node.js, Next.js. Data &amp; auth: Convex, Supabase, Clerk. Cloud, infrastructure &amp; CI/CD: AWS, Kubernetes, Terraform, Docker, GitHub Actions. Agentic code review: CodeRabbit, Greptile, Macroscope, Bugbot." width="830">
+  <img src="assets/board-wide-dark.png" alt="Maciej Czech, software engineer, Bydgoszcz, Poland · remote / EU. Code was the means, not the job. I've coded enough to understand the implications. Now I build and run products solo by orchestrating and building tooling around harnesses. Harnesses: Claude Code, Codex, Grok, Antigravity, Cursor. T3 Code control plane, two remote Linux machines, parallel runs. I reach it from any device. Changes come with screenshots, test output, and a different model's review; I decide what ships. Code: TypeScript, Go, Python, Bash. Web: React, Node.js, Next.js. Data &amp; auth: Convex, Supabase, Clerk. Cloud, infrastructure &amp; CI/CD: AWS, Kubernetes, Terraform, Docker, GitHub Actions. Agentic code review: CodeRabbit, Greptile, Macroscope, Bugbot." width="830">
 </picture></a>
 <a href="assets/board-wide-light.png#gh-light-mode-only"><picture>
   <source media="(max-width: 1011px)" srcset="assets/board-narrow-light.png" width="400">
-  <img src="assets/board-wide-light.png" alt="Maciej Czech, software engineer, Bydgoszcz, Poland · remote / EU. I build and run products solo by steering coding agents. Harnesses: Claude Code, Codex, Grok, Antigravity, Cursor. T3 Code, two remote Linux machines, PR with screenshots and test output. I steer from any device: Claude Code splits and builds, Codex reviews, Grok researches, Neon (Gemini) edits text. Every PR merges itself when checks leave no doubt, and waits for me otherwise. Code: TypeScript, Go, Python, Bash. Web: React, Node.js, Next.js. Data &amp; auth: Convex, Supabase, Clerk. Cloud, infrastructure &amp; CI/CD: AWS, Kubernetes, Terraform, Docker, GitHub Actions. Agentic code review: CodeRabbit, Greptile, Macroscope, Bugbot." width="830">
+  <img src="assets/board-wide-light.png" alt="Maciej Czech, software engineer, Bydgoszcz, Poland · remote / EU. Code was the means, not the job. I've coded enough to understand the implications. Now I build and run products solo by orchestrating and building tooling around harnesses. Harnesses: Claude Code, Codex, Grok, Antigravity, Cursor. T3 Code control plane, two remote Linux machines, parallel runs. I reach it from any device. Changes come with screenshots, test output, and a different model's review; I decide what ships. Code: TypeScript, Go, Python, Bash. Web: React, Node.js, Next.js. Data &amp; auth: Convex, Supabase, Clerk. Cloud, infrastructure &amp; CI/CD: AWS, Kubernetes, Terraform, Docker, GitHub Actions. Agentic code review: CodeRabbit, Greptile, Macroscope, Bugbot." width="830">
 </picture></a>
 </p>
 
@@ -31,4 +31,7 @@
 </picture></a>
 </p>
 
-[LinkedIn](https://www.linkedin.com/in/maciej-czech) · [maciej.a.czech@gmail.com](mailto:maciej.a.czech@gmail.com)
+<p>
+<a href="https://www.linkedin.com/in/maciej-czech"><img src="assets/link-linkedin.png" alt="LinkedIn" height="34"></a>
+<a href="mailto:maciej.a.czech@gmail.com"><img src="assets/link-email.png" alt="maciej.a.czech@gmail.com" height="34"></a>
+</p>

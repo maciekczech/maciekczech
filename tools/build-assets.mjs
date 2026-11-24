@@ -1,5 +1,7 @@
 // Renders the README images in assets/: every block in two layouts (wide for the
 // 830px desktop column, narrow for the 278px phone column) and two themes.
+// The contact links are small dark buttons: one size and one look for both columns and both themes,
+// because a mailto: link cannot carry the #gh-…-mode-only fragment that picks a theme.
 // GitHub strips CSS from READMEs, so the designed parts ship as transparent PNGs.
 // Run: npm run build:assets   (first time: npx playwright install chromium)
 import { chromium } from 'playwright';
@@ -7,7 +9,7 @@ import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = fileURLToPath(new URL('..', import.meta.url));
-const LAYOUTS = { wide: { width: 830, scale: 2 }, narrow: { width: 278, scale: 3 } };
+const LAYOUTS = { wide: { width: 830, scale: 2 }, narrow: { width: 278, scale: 3 }, link: { scale: 3, themes: ['dark'] } };
 
 const THEMES = {
   light: { surface: '#F6F8FA', tile: '#EAEEF2', hair: '#D1D9E0', text: '#1F2328', strong: '#0B0D10',
@@ -72,11 +74,11 @@ const group = (key, theme) => `<div class="k">${STACK[key][0]}</div>
 const BLOCKS = {
   board: (theme) => `<div class="board"><div class="cells">
     <div class="cell"><div class="name">Maciej Czech</div>
-      <div class="tag">I build and run products solo by steering coding agents.</div>
+      <div class="tag">Code was the means, not the job. I've coded enough to understand the implications. Now I build and run products solo by orchestrating and building tooling around harnesses.</div>
       <div class="meta">software engineer<br>Bydgoszcz, Poland · remote / EU</div></div>
     <div class="cell span2 hs">${group('harnesses', theme)}
-      <div class="flow"><b>T3 Code</b><i>›</i><span>two remote Linux machines</span><i>›</i><span>PR with screenshots + test output</span></div>
-      <div class="foot">I steer from any device: Claude Code splits and builds, Codex reviews, Grok researches, Neon (Gemini) edits text. Every PR <em>merges itself</em> when checks leave no doubt, and waits for me otherwise.</div></div>
+      <div class="flow"><b>T3 Code</b><span>control plane</span><i>›</i><span>two remote Linux machines</span><i>›</i><span>parallel runs</span></div>
+      <div class="foot">I reach it from any device. Changes come with screenshots, test output, and a different model's review; <em>I decide</em> what ships.</div></div>
     <div class="cell">${group('code', theme)}</div><div class="cell">${group('web', theme)}</div>
     <div class="cell">${group('data', theme)}</div><div class="cell span2">${group('cloud', theme)}</div>
     <div class="cell">${group('review', theme)}</div></div></div>`,
@@ -86,11 +88,17 @@ const BLOCKS = {
     <div class="url ${p.accent}">${p.url} ↗</div></div>`])),
 };
 
+const LINKS = {
+  linkedin: () => `<div class="chip"><span class="tile in">in</span>LinkedIn<i>↗</i></div>`,
+  email: () => `<div class="chip"><span class="tile"><svg class="mail" viewBox="0 0 16 16"><rect x="1.75" y="3.25" width="12.5" height="9.5" rx="2"/>
+    <path d="m2.5 4.5 5.5 4.25 5.5-4.25"/></svg></span>maciej.a.czech@gmail.com</div>`,
+};
+
 const CSS = `@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
 *{box-sizing:border-box;margin:0;padding:0}
 html{background:transparent;-webkit-font-smoothing:antialiased}
 #root{font-family:Inter,sans-serif;color:var(--text)}
-.k,.st,.pt,.url,.meta,.flow{font-family:'JetBrains Mono',monospace}
+.k,.st,.pt,.url,.meta,.flow,.chip{font-family:'JetBrains Mono',monospace}
 
 .board,.proj{border:1px solid var(--hair);border-radius:9px;overflow:hidden;background:var(--surface)}
 .cells{display:grid;margin:-1px 0 0 -1px;width:calc(100% + 1px)}
@@ -128,6 +136,12 @@ html{background:transparent;-webkit-font-smoothing:antialiased}
 .url{width:fit-content;margin:8px 12px 11px;font-size:11.5px;font-weight:700;text-decoration:underline;text-underline-offset:3px}
 .url.green{color:var(--green)}.url.amber{color:var(--amber)}
 
+.chip{display:flex;align-items:center;gap:8px;height:34px;padding:0 12px 0 7px;border:1px solid var(--hair);border-radius:9px;
+  background:var(--surface);font-size:12px;font-weight:500;color:var(--strong);white-space:nowrap}
+.chip i{font-style:normal;color:var(--dim)}
+.tile.in{background:#0A66C2;color:#fff;font:800 12px/1 Inter,sans-serif;padding-bottom:1px}
+.mail{width:13px;height:13px;fill:none;stroke:var(--muted);stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+
 /* wide: same system, reflowed for the 830px column */
 .wide .board,.wide .proj{border-radius:10px}
 .wide .cells{grid-template-columns:repeat(3,1fr)}
@@ -159,15 +173,15 @@ html{background:transparent;-webkit-font-smoothing:antialiased}
 
 const page = (body, theme, layout) => `<!doctype html><html><head><meta charset="utf-8"><style>${CSS}
 :root{${Object.entries(THEMES[theme]).map(([k, v]) => `--${k}:${v}`).join(';')}}</style></head>
-<body><div id="root" class="${layout}" style="width:${LAYOUTS[layout].width}px">${body}</div></body></html>`;
+<body><div id="root" class="${layout}" style="width:${LAYOUTS[layout].width ? `${LAYOUTS[layout].width}px` : 'fit-content'}">${body}</div></body></html>`;
 
 const browser = await chromium.launch();
-for (const [layout, { width, scale }] of Object.entries(LAYOUTS)) {
-  const context = await browser.newContext({ viewport: { width, height: 1200 }, deviceScaleFactor: scale });
+for (const [layout, { width, scale, themes }] of Object.entries(LAYOUTS)) {
+  const context = await browser.newContext({ viewport: { width: width ?? 400, height: 1200 }, deviceScaleFactor: scale });
   const tab = await context.newPage();
-  for (const theme of Object.keys(THEMES)) {
+  for (const theme of themes ?? Object.keys(THEMES)) {
     await tab.emulateMedia({ colorScheme: theme });
-    for (const [name, block] of Object.entries(BLOCKS)) {
+    for (const [name, block] of Object.entries(layout === 'link' ? LINKS : BLOCKS)) {
       await tab.setContent(page(block(theme), theme, layout), { waitUntil: 'networkidle' });
       const fontsOk = await tab.evaluate(async () => {
         const faces = ['400 1em Inter', '600 1em Inter', '700 1em Inter', '800 1em Inter', '400 1em "JetBrains Mono"',
@@ -177,7 +191,7 @@ for (const [layout, { width, scale }] of Object.entries(LAYOUTS)) {
         return loaded.every((list) => list.length > 0);
       });
       if (!fontsOk) throw new Error('Web fonts did not load; check the network and re-run.');
-      const out = `assets/${name}-${layout}-${theme}.png`;
+      const out = `assets/${layout === 'link' ? `link-${name}` : `${name}-${layout}-${theme}`}.png`;
       await tab.locator('#root').screenshot({ path: ROOT + out, omitBackground: true });
       console.log('wrote', out);
     }
