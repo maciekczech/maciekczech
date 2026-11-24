@@ -1,14 +1,15 @@
 <!-- Images in assets/ are generated: npm run build:assets.
+     The board is an SVG around its PNG: the last tile of each stack section fades through other tech of that domain.
      Theme: GitHub hides a link whose href ends in #gh-dark-mode-only or #gh-light-mode-only.
      A <source> that mentions prefers-color-scheme loses its width condition under a fixed GitHub theme. -->
 <p>
-<a href="assets/board-wide-dark.png#gh-dark-mode-only"><picture>
-  <source media="(max-width: 1011px)" srcset="assets/board-narrow-dark.png" width="400">
-  <img src="assets/board-wide-dark.png" alt="Maciej Czech, software engineer, Bydgoszcz, Poland · remote / EU. Code was the means, not the job. I've coded enough to understand the implications. Now I build and run products solo by orchestrating and building tooling around harnesses. Harnesses: Claude Code, Codex, Grok, Antigravity, Cursor. T3 Code control plane, two remote Linux machines, parallel runs. I reach it from any device. Changes come with screenshots, test output, and a different model's review; I decide what ships. Code: TypeScript, Go, Python, Bash. Web: React, Node.js, Next.js. Data &amp; auth: Convex, Supabase, Clerk. Cloud, infrastructure &amp; CI/CD: AWS, Kubernetes, Terraform, Docker, GitHub Actions. Agentic code review: CodeRabbit, Greptile, Macroscope, Bugbot." width="830">
+<a href="assets/board-wide-dark.svg#gh-dark-mode-only"><picture>
+  <source media="(max-width: 1011px)" srcset="assets/board-narrow-dark.svg" width="400">
+  <img src="assets/board-wide-dark.svg" alt="Maciej Czech, software engineer, Bydgoszcz, Poland · remote / EU. Code was the means, not the job. I've coded enough to understand the implications. Now I build and run products solo by orchestrating and building tooling around harnesses. Harnesses: Claude Code, Codex, Grok, Antigravity, Cursor. T3 Code control plane, two remote Linux machines, parallel runs. I reach it from any device. Changes come with screenshots, test output, and a different model's review; I decide what ships. Code: TypeScript, Go, Python, Bash, and more. Web: React, Node.js, Next.js, and more. Data &amp; auth: Convex, Supabase, Clerk, and more. Cloud, infrastructure &amp; CI/CD: AWS, Kubernetes, Terraform, Docker, GitHub Actions, and more. Agentic code review: CodeRabbit, Greptile, Macroscope, Bugbot, and more." width="830">
 </picture></a>
-<a href="assets/board-wide-light.png#gh-light-mode-only"><picture>
-  <source media="(max-width: 1011px)" srcset="assets/board-narrow-light.png" width="400">
-  <img src="assets/board-wide-light.png" alt="Maciej Czech, software engineer, Bydgoszcz, Poland · remote / EU. Code was the means, not the job. I've coded enough to understand the implications. Now I build and run products solo by orchestrating and building tooling around harnesses. Harnesses: Claude Code, Codex, Grok, Antigravity, Cursor. T3 Code control plane, two remote Linux machines, parallel runs. I reach it from any device. Changes come with screenshots, test output, and a different model's review; I decide what ships. Code: TypeScript, Go, Python, Bash. Web: React, Node.js, Next.js. Data &amp; auth: Convex, Supabase, Clerk. Cloud, infrastructure &amp; CI/CD: AWS, Kubernetes, Terraform, Docker, GitHub Actions. Agentic code review: CodeRabbit, Greptile, Macroscope, Bugbot." width="830">
+<a href="assets/board-wide-light.svg#gh-light-mode-only"><picture>
+  <source media="(max-width: 1011px)" srcset="assets/board-narrow-light.svg" width="400">
+  <img src="assets/board-wide-light.svg" alt="Maciej Czech, software engineer, Bydgoszcz, Poland · remote / EU. Code was the means, not the job. I've coded enough to understand the implications. Now I build and run products solo by orchestrating and building tooling around harnesses. Harnesses: Claude Code, Codex, Grok, Antigravity, Cursor. T3 Code control plane, two remote Linux machines, parallel runs. I reach it from any device. Changes come with screenshots, test output, and a different model's review; I decide what ships. Code: TypeScript, Go, Python, Bash, and more. Web: React, Node.js, Next.js, and more. Data &amp; auth: Convex, Supabase, Clerk, and more. Cloud, infrastructure &amp; CI/CD: AWS, Kubernetes, Terraform, Docker, GitHub Actions, and more. Agentic code review: CodeRabbit, Greptile, Macroscope, Bugbot, and more." width="830">
 </picture></a>
 </p>
 
