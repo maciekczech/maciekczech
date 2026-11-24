@@ -72,11 +72,11 @@ const group = (key, theme) => `<div class="k">${STACK[key][0]}</div>
 const BLOCKS = {
   board: (theme) => `<div class="board"><div class="cells">
     <div class="cell"><div class="name">Maciej Czech</div>
-      <div class="tag">I build and run products solo by steering coding agents.</div>
-      <div class="meta">software engineer<br>Bydgoszcz, Poland · remote / EU</div></div>
+      <div class="tag">Code was the means, not the job. I build and run products solo, trying to optimize how software is built by orchestrating coding agents.</div>
+      <div class="meta">experienced software engineer<br>Bydgoszcz, Poland · remote / EU</div></div>
     <div class="cell span2 hs">${group('harnesses', theme)}
-      <div class="flow"><b>T3 Code</b><i>›</i><span>two remote Linux machines</span><i>›</i><span>PR with screenshots + test output</span></div>
-      <div class="foot">I steer from any device: Claude Code splits and builds, Codex reviews, Grok researches, Neon (Gemini) edits text. Every PR <em>merges itself</em> when checks leave no doubt, and waits for me otherwise.</div></div>
+      <div class="flow"><b>T3 Code</b><span>control plane</span><i>›</i><span>two remote Linux machines</span><i>›</i><span>parallel runs</span></div>
+      <div class="foot">I reach it from any device. Changes come with screenshots, test output, and a different model's review; <em>I decide</em> what ships.</div></div>
     <div class="cell">${group('code', theme)}</div><div class="cell">${group('web', theme)}</div>
     <div class="cell">${group('data', theme)}</div><div class="cell span2">${group('cloud', theme)}</div>
     <div class="cell">${group('review', theme)}</div></div></div>`,
