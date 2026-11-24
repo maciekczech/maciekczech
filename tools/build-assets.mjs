@@ -1,6 +1,7 @@
 // Renders the README images in assets/: every block in two layouts (wide for the
 // 830px desktop column, narrow for the 278px phone column) and two themes.
-// The contact links are small buttons, one size for both columns.
+// The contact links are small dark buttons: one size and one look for both columns and both themes,
+// because a mailto: link cannot carry the #gh-…-mode-only fragment that picks a theme.
 // GitHub strips CSS from READMEs, so the designed parts ship as transparent PNGs.
 // Run: npm run build:assets   (first time: npx playwright install chromium)
 import { chromium } from 'playwright';
@@ -8,7 +9,7 @@ import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = fileURLToPath(new URL('..', import.meta.url));
-const LAYOUTS = { wide: { width: 830, scale: 2 }, narrow: { width: 278, scale: 3 }, link: { scale: 3 } };
+const LAYOUTS = { wide: { width: 830, scale: 2 }, narrow: { width: 278, scale: 3 }, link: { scale: 3, themes: ['dark'] } };
 
 const THEMES = {
   light: { surface: '#F6F8FA', tile: '#EAEEF2', hair: '#D1D9E0', text: '#1F2328', strong: '#0B0D10',
@@ -175,10 +176,10 @@ const page = (body, theme, layout) => `<!doctype html><html><head><meta charset=
 <body><div id="root" class="${layout}" style="width:${LAYOUTS[layout].width ? `${LAYOUTS[layout].width}px` : 'fit-content'}">${body}</div></body></html>`;
 
 const browser = await chromium.launch();
-for (const [layout, { width, scale }] of Object.entries(LAYOUTS)) {
+for (const [layout, { width, scale, themes }] of Object.entries(LAYOUTS)) {
   const context = await browser.newContext({ viewport: { width: width ?? 400, height: 1200 }, deviceScaleFactor: scale });
   const tab = await context.newPage();
-  for (const theme of Object.keys(THEMES)) {
+  for (const theme of themes ?? Object.keys(THEMES)) {
     await tab.emulateMedia({ colorScheme: theme });
     for (const [name, block] of Object.entries(layout === 'link' ? LINKS : BLOCKS)) {
       await tab.setContent(page(block(theme), theme, layout), { waitUntil: 'networkidle' });
@@ -190,7 +191,7 @@ for (const [layout, { width, scale }] of Object.entries(LAYOUTS)) {
         return loaded.every((list) => list.length > 0);
       });
       if (!fontsOk) throw new Error('Web fonts did not load; check the network and re-run.');
-      const out = `assets/${layout === 'link' ? `link-${name}` : `${name}-${layout}`}-${theme}.png`;
+      const out = `assets/${layout === 'link' ? `link-${name}` : `${name}-${layout}-${theme}`}.png`;
       await tab.locator('#root').screenshot({ path: ROOT + out, omitBackground: true });
       console.log('wrote', out);
     }

@@ -1,5 +1,5 @@
 <!-- Images in assets/ are generated: npm run build:assets.
-     Theme: GitHub hides a link whose href, or an image whose src, ends in #gh-dark-mode-only or #gh-light-mode-only.
+     Theme: GitHub hides a link whose href ends in #gh-dark-mode-only or #gh-light-mode-only.
      A <source> that mentions prefers-color-scheme loses its width condition under a fixed GitHub theme. -->
 <p>
 <a href="assets/board-wide-dark.png#gh-dark-mode-only"><picture>
@@ -32,6 +32,6 @@
 </p>
 
 <p>
-<a href="https://www.linkedin.com/in/maciej-czech"><img src="assets/link-linkedin-dark.png#gh-dark-mode-only" alt="LinkedIn" height="34"><img src="assets/link-linkedin-light.png#gh-light-mode-only" alt="LinkedIn" height="34"></a>
-<a href="mailto:maciej.a.czech@gmail.com"><img src="assets/link-email-dark.png#gh-dark-mode-only" alt="maciej.a.czech@gmail.com" height="34"><img src="assets/link-email-light.png#gh-light-mode-only" alt="maciej.a.czech@gmail.com" height="34"></a>
+<a href="https://www.linkedin.com/in/maciej-czech"><img src="assets/link-linkedin.png" alt="LinkedIn" height="34"></a>
+<a href="mailto:maciej.a.czech@gmail.com"><img src="assets/link-email.png" alt="maciej.a.czech@gmail.com" height="34"></a>
 </p>
