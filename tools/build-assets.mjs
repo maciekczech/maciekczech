@@ -74,7 +74,7 @@ const group = (key, theme) => `<div class="k">${STACK[key][0]}</div>
 const BLOCKS = {
   board: (theme) => `<div class="board"><div class="cells">
     <div class="cell"><div class="name">Maciej Czech</div>
-      <div class="tag">Code was the means, not the job. I build and run products solo, trying to optimize how software is built by orchestrating coding agents.</div>
+      <div class="tag">Code was the means, not the job. I've coded enough to know the tradeoffs. Now I build and run products solo by orchestrating and building tooling around harnesses.</div>
       <div class="meta">software engineer<br>Bydgoszcz, Poland · remote / EU</div></div>
     <div class="cell span2 hs">${group('harnesses', theme)}
       <div class="flow"><b>T3 Code</b><span>control plane</span><i>›</i><span>two remote Linux machines</span><i>›</i><span>parallel runs</span></div>
