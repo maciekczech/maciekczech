@@ -109,20 +109,23 @@ const LINKS = {
 
 // Wraps the board PNG and lays the glyphs over the empty `.tile.more` boxes measured in the page.
 // Each glyph is visible for one slot of the loop; negative delays put every tile mid-cycle at load.
-function animated(png, { width, height }, tiles, theme) {
+// `still` keeps the first glyph of each tile and no motion: the README serves it under
+// prefers-reduced-motion, which an SVG shown through <img> does not see for itself.
+function overlay(png, { width, height }, tiles, theme, still) {
   const slots = MORE[tiles[0].key].length, hold = tiles.length * STEP, loop = slots * hold;
   const at = (seconds) => `${+(seconds / loop * 100).toFixed(3)}%`;
-  const glyphs = tiles.flatMap((tile, i) => MORE[tile.key].map((name, j) => {
+  const glyphs = tiles.flatMap((tile, i) => MORE[tile.key].slice(0, still ? 1 : slots).map((name, j) => {
     const file = name === 'vercel' ? 'vercel.svg' : `more/${name}.svg`;
     const d = readFileSync(`${ROOT}tools/icons/${file}`, 'utf8').match(/ d="([^"]+)"/)[1];
     const size = tile.size * 0.6, pad = (tile.size - size) / 2;
-    return `<path${j ? '' : ' class="first"'} style="animation-delay:${(j * tiles.length + i) * STEP - loop}s" transform="translate(${
+    return `<path${j ? '' : ' class="first"'}${still ? '' : ` style="animation-delay:${(j * tiles.length + i) * STEP - loop}s"`} transform="translate(${
       +(tile.x + pad).toFixed(2)} ${+(tile.y + pad).toFixed(2)}) scale(${+(size / 24).toFixed(4)})" d="${d}"/>`;
   }));
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}">
-<style>path{fill:${THEMES[theme].text};opacity:0;animation:more ${loop}s linear infinite}.first{opacity:${DIM[theme]}}
+<style>path{fill:${THEMES[theme].text};opacity:0}.first{opacity:${DIM[theme]}}${still ? '' : `
+path{animation:more ${loop}s linear infinite}
 @keyframes more{0%{opacity:0}${at(FADE)},${at(hold)}{opacity:${DIM[theme]}}${at(hold + FADE)},100%{opacity:0}}
-@media (prefers-reduced-motion:reduce){path{animation:none}}</style>
+@media (prefers-reduced-motion:reduce){path{animation:none}}`}</style>
 <image width="${width}" height="${height}" href="data:image/png;base64,${png.toString('base64')}"/>
 ${glyphs.join('\n')}
 </svg>
@@ -235,7 +238,10 @@ for (const [layout, { width, scale, themes }] of Object.entries(LAYOUTS)) {
       }));
       const base = `assets/${layout === 'link' ? `link-${name}` : `${name}-${layout}-${theme}`}`;
       const png = await root.screenshot({ path: tiles.length ? undefined : `${ROOT}${base}.png`, omitBackground: true });
-      if (tiles.length) writeFileSync(`${ROOT}${base}.svg`, animated(png, await root.boundingBox(), tiles, theme));
+      const box = tiles.length && await root.boundingBox();
+      for (const still of tiles.length ? [false, true] : []) {
+        writeFileSync(`${ROOT}${base}${still ? '-still' : ''}.svg`, overlay(png, box, tiles, theme, still));
+      }
       console.log('wrote', `${base}.${tiles.length ? 'svg' : 'png'}`);
     }
   }
