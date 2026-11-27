@@ -3,9 +3,11 @@
 // The contact links are small dark buttons: one size and one look for both columns and both themes,
 // because a mailto: link cannot carry the #gh-…-mode-only fragment that picks a theme.
 // GitHub strips CSS from READMEs, so the designed parts ship as transparent PNGs.
+// The board ships as an SVG that wraps its PNG and fades dim glyphs through the last tile of each
+// stack section: other tech of that domain, shown as "and more", never as a listed item.
 // Run: npm run build:assets   (first time: npx playwright install chromium)
 import { chromium } from 'playwright';
-import { readFileSync } from 'node:fs';
+import { readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = fileURLToPath(new URL('..', import.meta.url));
@@ -54,6 +56,17 @@ const STACK = {
   review: ['Agentic code review', ['CodeRabbit', 'Greptile', 'Macroscope', 'Bugbot']],
 };
 
+// simple-icons files in tools/icons/more, the same count per section so the loop closes.
+const MORE = {
+  code: ['javascript', 'c', 'rust', 'swift'],
+  web: ['tailwindcss', 'vite', 'vuedotjs', 'svelte'],
+  data: ['postgresql', 'redis', 'mongodb', 'firebase'],
+  cloud: ['vercel', 'linux', 'cloudflare', 'googlecloud'],
+  review: ['githubcopilot', 'graphite', 'qodo', 'sonarqubeserver'],
+};
+const STEP = 3, FADE = 0.9; // seconds: one tile changes every STEP, and the change takes FADE
+const DIM = { dark: 0.38, light: 0.42 };
+
 const PROJECTS = {
   matchplay: {
     accent: 'green', url: 'matchplay.gg', tech: ['Next.js', 'Supabase', 'Vercel', 'PostHog'],
@@ -69,7 +82,7 @@ const PROJECTS = {
 };
 
 const group = (key, theme) => `<div class="k">${STACK[key][0]}</div>
-  <div class="items">${STACK[key][1].map((n) => `<span class="st"><span class="tile">${logo(n, theme)}</span>${n}</span>`).join('')}</div>`;
+  <div class="items">${STACK[key][1].map((n) => `<span class="st"><span class="tile">${logo(n, theme)}</span>${n}</span>`).join('')}${MORE[key] ? `<span class="tile more" data-more="${key}"></span>` : ''}</div>`;
 
 const BLOCKS = {
   board: (theme) => `<div class="board"><div class="cells">
@@ -94,6 +107,31 @@ const LINKS = {
     <path d="m2.5 4.5 5.5 4.25 5.5-4.25"/></svg></span>maciej.a.czech@gmail.com</div>`,
 };
 
+// Wraps the board PNG and lays the glyphs over the empty `.tile.more` boxes measured in the page.
+// Each glyph is visible for one slot of the loop; negative delays put every tile mid-cycle at load.
+// `still` keeps the first glyph of each tile and no motion: the README serves it under
+// prefers-reduced-motion, which an SVG shown through <img> does not see for itself.
+function overlay(png, { width, height }, tiles, theme, still) {
+  const slots = MORE[tiles[0].key].length, hold = tiles.length * STEP, loop = slots * hold;
+  const at = (seconds) => `${+(seconds / loop * 100).toFixed(3)}%`;
+  const glyphs = tiles.flatMap((tile, i) => MORE[tile.key].slice(0, still ? 1 : slots).map((name, j) => {
+    const file = name === 'vercel' ? 'vercel.svg' : `more/${name}.svg`;
+    const d = readFileSync(`${ROOT}tools/icons/${file}`, 'utf8').match(/ d="([^"]+)"/)[1];
+    const size = tile.size * 0.6, pad = (tile.size - size) / 2;
+    return `<path${j ? '' : ' class="first"'}${still ? '' : ` style="animation-delay:${(j * tiles.length + i) * STEP - loop}s"`} transform="translate(${
+      +(tile.x + pad).toFixed(2)} ${+(tile.y + pad).toFixed(2)}) scale(${+(size / 24).toFixed(4)})" d="${d}"/>`;
+  }));
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}">
+<style>path{fill:${THEMES[theme].text};opacity:0}.first{opacity:${DIM[theme]}}${still ? '' : `
+path{animation:more ${loop}s linear infinite}
+@keyframes more{0%{opacity:0}${at(FADE)},${at(hold)}{opacity:${DIM[theme]}}${at(hold + FADE)},100%{opacity:0}}
+@media (prefers-reduced-motion:reduce){path{animation:none}}`}</style>
+<image width="${width}" height="${height}" href="data:image/png;base64,${png.toString('base64')}"/>
+${glyphs.join('\n')}
+</svg>
+`;
+}
+
 const CSS = `@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
 *{box-sizing:border-box;margin:0;padding:0}
 html{background:transparent;-webkit-font-smoothing:antialiased}
@@ -112,6 +150,7 @@ html{background:transparent;-webkit-font-smoothing:antialiased}
 .tile{width:20px;height:20px;border-radius:5px;background:var(--tile);display:flex;align-items:center;justify-content:center;overflow:hidden}
 .tile .logo{width:13px;height:13px;display:block}
 .tile .logo.badge{width:100%;height:100%}
+.tile.more{background:none;border:1px solid var(--hair)}
 .flow{display:flex;flex-wrap:wrap;align-items:center;gap:2px 6px;margin-top:11px;font-size:10.5px;color:var(--muted)}
 .flow b{color:var(--strong)}
 .flow i{font-style:normal;color:var(--dim)}
@@ -153,6 +192,7 @@ html{background:transparent;-webkit-font-smoothing:antialiased}
 .wide .k{font-size:12px}
 .wide .items{gap:9px 16px;margin-top:10px}
 .wide .hs .items{column-gap:14px}
+.wide .cell:last-child .items{column-gap:10px}
 .wide .st{font-size:13px;gap:8px}
 .wide .tile{width:24px;height:24px;border-radius:6px}
 .wide .tile .logo{width:16px;height:16px}
@@ -191,9 +231,18 @@ for (const [layout, { width, scale, themes }] of Object.entries(LAYOUTS)) {
         return loaded.every((list) => list.length > 0);
       });
       if (!fontsOk) throw new Error('Web fonts did not load; check the network and re-run.');
-      const out = `assets/${layout === 'link' ? `link-${name}` : `${name}-${layout}-${theme}`}.png`;
-      await tab.locator('#root').screenshot({ path: ROOT + out, omitBackground: true });
-      console.log('wrote', out);
+      const root = tab.locator('#root');
+      const tiles = await tab.locator('.tile.more').evaluateAll((list) => list.map((el) => {
+        const box = el.getBoundingClientRect(), origin = document.querySelector('#root').getBoundingClientRect();
+        return { key: el.dataset.more, x: box.x - origin.x, y: box.y - origin.y, size: box.width };
+      }));
+      const base = `assets/${layout === 'link' ? `link-${name}` : `${name}-${layout}-${theme}`}`;
+      const png = await root.screenshot({ path: tiles.length ? undefined : `${ROOT}${base}.png`, omitBackground: true });
+      const box = tiles.length && await root.boundingBox();
+      for (const still of tiles.length ? [false, true] : []) {
+        writeFileSync(`${ROOT}${base}${still ? '-still' : ''}.svg`, overlay(png, box, tiles, theme, still));
+      }
+      console.log('wrote', `${base}.${tiles.length ? 'svg' : 'png'}`);
     }
   }
   await context.close();
